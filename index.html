@@ -1,44 +1,98 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World Mini App</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>遠傳電信</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
+            background-color: #222;
+            color: #fff;
+            margin: 0;
+            padding: 0;
         }
-        button {
-            background-color: #0088cc;
-            color: white;
-            padding: 10px 20px;
-            border: none;
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            background-color: #333;
+            padding: 10px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #444;
+            padding: 10px;
             border-radius: 5px;
-            cursor: pointer;
+        }
+        .story-list {
+            margin-top: 10px;
+        }
+        .story {
+            background-color: #444;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .story img {
+            width: 80px;
+            height: 60px;
+            background-color: lightgray;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        .locked img {
+            filter: grayscale(100%);
         }
     </style>
 </head>
 <body>
-    <h1>Hello World!  !!! </h1>
-    <p id="user-info">載入中...</p>
-    <button id="btn">發送訊息到 Telegram</button>
-
-    <script>
-        let tg = window.Telegram.WebApp;
-        tg.expand(); // 讓 Mini App 全螢幕顯示
-
-        // 顯示使用者資訊
-        let userInfo = tg.initDataUnsafe.user;
-        document.getElementById("user-info").innerText = `Hello, ${userInfo.first_name}!`;
-
-        // 按鈕事件：發送資料回 Telegram
-        document.getElementById("btn").addEventListener("click", function() {
-            tg.sendData(JSON.stringify({ message: "Hello from Mini App!" }));
-            tg.close();
-        });
-    </script>
+    <div class="container">
+        <div class="header">
+            <span>遠傳電信</span>
+            <span>等級：2 &nbsp; P幣：2,100</span>
+        </div>
+        <div class="story-list">
+            <div class="story">
+                <img src="https://picsum.photos/200" alt="故事一">
+                <div class="story-content">
+                    <h3>故事一</h3>
+                    <p>這是已解鎖的故事內容...</p>
+                </div>
+            </div>
+            <div class="story locked">
+                <img src="https://picsum.photos/200" alt="故事二">
+                <div class="story-content">
+                    <h3>故事二</h3>
+                    <p>內容被鎖定...</p>
+                </div>
+            </div>
+            <div class="story locked">
+                <img src="https://picsum.photos/200" alt="故事三">
+                <div class="story-content">
+                    <h3>故事三</h3>
+                    <p>內容被鎖定...</p>
+                </div>
+            </div>
+            <div class="story locked">
+                <img src="https://picsum.photos/200" alt="故事四">
+                <div class="story-content">
+                    <h3>故事四</h3>
+                    <p>內容被鎖定...</p>
+                </div>
+            </div>
+            <div class="story locked">
+                <img src="https://picsum.photos/200" alt="故事五">
+                <div class="story-content">
+                    <h3>故事五</h3>
+                    <p>內容被鎖定...</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
