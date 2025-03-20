@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            background-color: #0088cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p id="user-info">載入中...</p>
+    <button id="btn">發送訊息到 Telegram</button>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // 讓 Mini App 全螢幕顯示
+
+        // 顯示使用者資訊
+        let userInfo = tg.initDataUnsafe.user;
+        document.getElementById("user-info").innerText = `Hello, ${userInfo.first_name}!`;
+
+        // 按鈕事件：發送資料回 Telegram
+        document.getElementById("btn").addEventListener("click", function() {
+            tg.sendData(JSON.stringify({ message: "Hello from Mini App!" }));
+            tg.close();
+        });
+    </script>
+</body>
+</html>
